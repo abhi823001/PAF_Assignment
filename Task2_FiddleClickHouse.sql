@@ -1,3 +1,15 @@
+------create output2 table for task 2
+
+CREATE TABLE output2 (
+    enquiry_id    String,
+    date Date,
+    user_id String,
+    txn_ids Array(String)
+) ENGINE=Memory;
+
+-----Insert records in the output1 table for task2
+
+Insert Into output2
 SELECT 
     e.enquiry_id, 
     e.date, 
@@ -14,3 +26,5 @@ LEFT JOIN (
     ORDER BY t1.txn_id, e1.date ASC -- Ensures the earliest enquiry is selected
 ) t ON e.enquiry_id = t.enquiry_id
 GROUP BY e.enquiry_id, e.date, e.user_id;
+
+Select * from output2;
